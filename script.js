@@ -10,6 +10,8 @@ const buttons = document.getElementById("letter-buttons");
 const finalText = document.getElementById("final-text");
 const letterWindow = document.querySelector(".letter-window");
 
+finalText.style.display = "none";
+
 /* --------------------------
    Open Envelope
 -------------------------- */
@@ -83,3 +85,4 @@ yesBtn.addEventListener("click", () => {
 
 
 });
+
