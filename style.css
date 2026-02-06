@@ -1,129 +1,157 @@
+/* Global box sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url("heart-bg.jpg");
-    background-size: cover;
-    background-position: center;
-    font-family: "Pixelify Sans", sans-serif;
-    overflow-x: hidden;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("heart-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  font-family: "Pixelify Sans", sans-serif;
+  overflow-x: hidden;
 }
 
 /* Envelope Screen */
 #envelope-container {
-    text-align: center;
-    cursor: pointer;
+  text-align: center;
+  cursor: pointer;
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 #envelope {
-    width: min(60vw, 200px);
-    animation: pulse 1.5s infinite;
+  width: min(60vw, 200px);
+  animation: pulse 1.5s infinite;
 }
 
 /* Letter container */
 #letter-container {
-    display: none;
-    position: fixed;
-    inset: 0;
-    padding: 1rem;
-    justify-content: center;
-    align-items: center;
+  display: none;
+  position: fixed;
+  inset: 0;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  display: flex; /* to center content */
 }
 
 /* Letter window */
 .letter-window {
-    width: 100%;
-    max-width: 420px;
-    aspect-ratio: 3 / 4; /* better for phones */
-    padding: 1rem;
-    padding-top: clamp(120px, 30vw, 180px);
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-
-    background-image: url("window.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-
-    border-radius: 12px;
-    gap: 0.5rem;
-
-    transform: scale(1);
-    opacity: 0;
-    transition: transform 0.6s ease, opacity 0.6s ease;
+  width: 90vw;
+  max-width: 320px;      /* smaller to better fit box */
+  aspect-ratio: 3 / 3;   /* more square for pixel box */
+  padding: 180px 20px 40px 20px; /* top, right, bottom, left */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* align top */
+  align-items: center;
+  text-align: center;
+  background-image: url("window.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 12px;
+  gap: 10px;
+  transform: scale(1);
+  opacity: 1;
+  transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
 .letter-window.open {
-    opacity: 1;
+  opacity: 1;
+}
+
+/* Responsive padding for small screens */
+@media (max-width: 400px) {
+  .letter-window {
+    padding-top: 120px;
+  }
 }
 
 /* Text */
 h1 {
-    font-size: clamp(1.2rem, 5vw, 1.8rem);
-    margin: 0;
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  margin: 0;
 }
 
 p {
-    font-size: clamp(1.2rem, 6vw, 2rem);
+  font-size: clamp(1.2rem, 6vw, 2rem);
 }
 
 /* Cat */
 .cat {
-    width: min(50vw, 220px);
-    margin: 0.5rem 0;
-    transition: width 0.4s ease;
+  max-width: 100%;
+  height: auto;
+  margin: 10px 0;
+  object-fit: contain;
 }
 
 .letter-window.final .cat {
-    width: min(40vw, 180px);
+  width: min(40vw, 180px);
 }
 
 /* Buttons */
 .buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .btn {
-    width: min(30vw, 120px);
-    user-select: none;
-    touch-action: manipulation;
+  width: min(30vw, 120px);
+  user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
 }
 
 .yes-btn,
 .no-btn {
-    height: auto;
-    display: inline-block;
+  height: auto;
+  display: inline-block;
+  transition: transform 0.3s ease;
 }
 
 .yes-btn {
-    z-index: 2;
-    transition: transform 0.3s ease;
+  z-index: 2;
 }
 
 .no-btn {
-    z-index: 1;
-    transition: transform 0.15s ease;
+  z-index: 1;
+  transition: transform 0.15s ease;
+  cursor: default;
 }
 
 /* Final text */
 .final-text {
-    font-size: clamp(0.9rem, 4vw, 1.2rem);
-    line-height: 1.4;
-    padding: 0.6rem 1rem;
-    background-color: rgba(255,240,240,0.5);
-    border-radius: 12px;
+  font-size: clamp(0.9rem, 4vw, 1.2rem);
+  line-height: 1.4;
+  padding: 0.6rem 1rem;
+  background-color: rgba(255,240,240,0.5);
+  border-radius: 12px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+/* Bounce animation for NO button */
+@keyframes bounceEffect {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.bounce {
+  animation: bounceEffect 0.3s ease;
 }
