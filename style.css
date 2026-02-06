@@ -152,6 +152,7 @@ p {
 }
 
 /* Final Text */
+
 .final-text {
     display: none;
 
@@ -167,7 +168,6 @@ p {
     margin-top: 6px;
 }
 
-/* Show final text */
 .final-text.show {
     display: block;
 }
@@ -192,5 +192,6 @@ p {
         font-size: 1.1rem;
     }
 }
+
 
 
