@@ -153,6 +153,8 @@ p {
 
 /* Final Text */
 .final-text {
+   display: none !important; /* FORCE hidden */
+
     font-size: 0.85rem;
     line-height: 1.4;
 
@@ -184,3 +186,4 @@ p {
         font-size: 1.1rem;
     }
 }
+
