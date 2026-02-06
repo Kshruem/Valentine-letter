@@ -81,8 +81,8 @@ yesBtn.addEventListener("click", () => {
 
     buttons.style.display = "none";
 
-    finalText.style.display = "block";
-
+    finalText.classList.add("show");
 
 });
+
 
