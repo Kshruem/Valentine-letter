@@ -9,76 +9,64 @@ const catImg = document.getElementById("letter-cat");
 const buttons = document.getElementById("letter-buttons");
 const finalText = document.getElementById("final-text");
 
-// Open letter on envelope tap/click
-envelope.addEventListener("click", () => {
-  envelope.style.display = "none";
-  letter.style.display = "flex";
+// Click Envelope
 
-  setTimeout(() => {
-    document.querySelector(".letter-window").classList.add("open");
-  }, 50);
+envelope.addEventListener("click", () => {
+    envelope.style.display = "none";
+    letter.style.display = "flex";
+
+    setTimeout( () => {
+        document.querySelector(".letter-window").classList.add("open");
+    },50);
 });
 
-// Get random move distance (responsive)
-function getMoveDistance() {
-  const vw = window.innerWidth;
-  if (vw < 400) return 100; // small phones
-  if (vw < 700) return 150; // larger phones
-  return 200;               // desktop/tablet
-}
+// Logic to move the NO btn
 
-// Helper: reset animation to allow re-triggering
-function resetAnimation(element) {
-  element.style.animation = "none";
-  element.offsetHeight; // trigger reflow
-  element.style.animation = null;
-}
+noBtn.addEventListener("mouseover", () => {
+    const min = 200;
+    const max = 200;
 
-// Move NO button with bounce effect + vibration
-function moveNoBtn() {
-  const distance = getMoveDistance();
-  const angle = Math.random() * Math.PI * 2;
+    const distance = Math.random() * (max - min) + min;
+    const angle = Math.random() * Math.PI * 2;
 
-  const moveX = Math.cos(angle) * distance;
-  const moveY = Math.sin(angle) * distance;
+    const moveX = Math.cos(angle) * distance;
+    const moveY = Math.sin(angle) * distance;
 
-  // Vibrate device 50ms
-  if (navigator.vibrate) navigator.vibrate(50);
+    noBtn.style.transition = "transform 0.3s ease";
+    noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+});
 
-  // Move with CSS transform & add bounce class
-  noBtn.style.transition = "transform 0.3s ease";
-  noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+// Logic to make YES btn to grow
 
-  resetAnimation(noBtn);
-  noBtn.classList.add("bounce");
-}
+// let yesScale = 1;
 
-// NO button events
-noBtn.addEventListener("mouseover", moveNoBtn);
-noBtn.addEventListener("touchstart", (e) => {
-  e.preventDefault(); // prevent accidental click
-  moveNoBtn();
-}, { passive: false });
+// yesBtn.style.position = "relative"
+// yesBtn.style.transformOrigin = "center center";
+// yesBtn.style.transition = "transform 0.3s ease";
 
-// YES button grow animation + vibration
+// noBtn.addEventListener("click", () => {
+//     yesScale += 2;
+
+//     if (yesBtn.style.position !== "fixed") {
+//         yesBtn.style.position = "fixed";
+//         yesBtn.style.top = "50%";
+//         yesBtn.style.left = "50%";
+//         yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
+//     }else{
+//         yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
+//     }
+// });
+
+// YES is clicked
+
 yesBtn.addEventListener("click", () => {
-  // Vibrate device 100ms
-  if (navigator.vibrate) navigator.vibrate(100);
-
-  // Animate YES button grow
-  yesBtn.style.transition = "transform 0.4s ease";
-  yesBtn.style.transformOrigin = "center center";
-  yesBtn.style.transform = "scale(1.5)";
-
-  // After animation ends, show final screen
-  setTimeout(() => {
     title.textContent = "Yippeeee!";
-    catImg.src = "cat_dance.gif";
-    document.querySelector(".letter-window").classList.add("final");
-    buttons.style.display = "none";
-    finalText.style.display = "block";
 
-    // Reset YES button scale in case user returns
-    yesBtn.style.transform = "";
-  }, 400);
+    catImg.src = "cat_dance.gif";
+
+    document.querySelector(".letter-window").classList.add("final");
+
+    buttons.style.display = "none";
+
+    finalText.style.display = "block";
 });
