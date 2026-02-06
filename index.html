@@ -2,21 +2,30 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Valentine Letter</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Mobile viewport -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Valentine Letter</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Aldrich&family=Pixelify+Sans:wght@400..700&display=swap"
       rel="stylesheet"
     />
-    <title>Document</title>
   </head>
+
   <body>
     <!-- Envelope Screen -->
-    <div id="envelope-container">
+    <div id="envelope-container" role="button" aria-label="Open letter">
       <img src="envelope.png" alt="Envelope" id="envelope" />
       <p>♡ Letter for You ♡</p>
     </div>
@@ -26,21 +35,38 @@
       <div class="letter-window">
         <h1 id="letter-title">Will you be my Valentine?</h1>
 
-        <img src="cat_heart.gif" class="cat" id="letter-cat" />
+        <img
+          src="cat_heart.gif"
+          class="cat"
+          id="letter-cat"
+          alt="Cute cat holding a heart"
+        />
 
         <div class="buttons" id="letter-buttons">
-          <img src="yes.png" class="btn yes-btn" alt="Yes" />
+          <img
+            src="yes.png"
+            class="btn yes-btn"
+            alt="Yes"
+            draggable="false"
+          />
 
           <div class="no-wrapper">
-            <img src="no.png" class="btn no-btn" alt="No" />
+            <img
+              src="no.png"
+              class="btn no-btn"
+              alt="No"
+              draggable="false"
+            />
           </div>
         </div>
 
         <p id="final-text" class="final-text" style="display: none">
-          <strong>Valentine Date:</strong> February 14 hehe mag ppicture tayo
+          <strong>Valentine Date:</strong>
+          February 14 hehe mag ppicture tayo
         </p>
       </div>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>
