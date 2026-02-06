@@ -15,6 +15,8 @@ const letterWindow = document.querySelector(".letter-window");
 -------------------------- */
 
 envelope.addEventListener("click", () => {
+
+    document.body.style.overflow = "hidden";
     envelope.style.display = "none";
     letter.style.display = "flex";
 
@@ -78,5 +80,6 @@ yesBtn.addEventListener("click", () => {
     buttons.style.display = "none";
 
     finalText.style.display = "block";
+
 
 });
