@@ -7,7 +7,7 @@
 
 /* Body */
 body {
-    min-height: 100dvh; /* Real mobile height */
+    min-height: 100dvh;
 
     display: flex;
     justify-content: center;
@@ -22,14 +22,14 @@ body {
     overflow: hidden;
 }
 
-/* Envelope Screen */
+/* Envelope */
 #envelope-container {
     text-align: center;
     cursor: pointer;
     padding: 20px;
 }
 
-/* Pulse Animation */
+/* Pulse */
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
@@ -61,7 +61,7 @@ body {
     width: 100%;
     max-width: 380px;
 
-    height: 90dvh; /* Fits screen */
+    height: 90dvh;
     max-height: 620px;
 
     padding: 120px 15px 15px;
@@ -89,7 +89,7 @@ body {
     transition: all 0.5s ease;
 }
 
-/* Open Animation */
+/* Open */
 .letter-window.open {
     transform: scale(1);
     opacity: 1;
@@ -99,11 +99,6 @@ body {
 h1 {
     font-size: 1.2rem;
     margin-bottom: 5px;
-}
-
-/* Text */
-p {
-    font-size: 0.9rem;
 }
 
 /* Cat */
@@ -129,7 +124,7 @@ p {
     margin-top: 5px;
 }
 
-/* Button Images */
+/* Button */
 .btn {
     width: 70px;
     max-width: 25vw;
@@ -138,21 +133,7 @@ p {
     user-select: none;
 }
 
-/* YES Button */
-.yes-btn {
-    z-index: 2;
-    transition: transform 0.3s ease;
-}
-
-/* NO Button */
-.no-btn {
-    z-index: 1;
-    transition: transform 0.2s ease;
-    cursor: default;
-}
-
 /* Final Text */
-
 .final-text {
     display: none;
 
@@ -166,12 +147,15 @@ p {
     border-radius: 10px;
 
     margin-top: 6px;
+
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 .final-text.show {
     display: block;
+    opacity: 1;
 }
-
 
 /* Small Phones */
 @media (max-height: 650px) {
@@ -192,6 +176,3 @@ p {
         font-size: 1.1rem;
     }
 }
-
-
-
